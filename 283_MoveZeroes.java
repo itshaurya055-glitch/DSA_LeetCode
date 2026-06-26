@@ -1,20 +1,17 @@
-// num = [0,1,0,3,12]
-// whhat we want = [1,3,12,0,0]
-// and what we wiil do is we move all non zero elemnqents to the front and increment the index
-
-
 class Solution {
-    public void moveZeroes(int[] nums){
-        int n = nums.length;
-        int k = 0 ;
-        for(int i = 0 ; i < n ; i++){
-            if(nums[i] != 0){
-                int temp = nums[i];
-                nums[i] = nums[k];
-                nums[k] = temp;
-                k++;
+    public void moveZeroes(int[] nums) {
+        int insertPos = 0; // Position where the next non-zero element should go
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                // Swap only if needed
+                if (i != insertPos) {
+                    int temp = nums[i];
+                    nums[i] = nums[insertPos];
+                    nums[insertPos] = temp;
+                }
+                insertPos++;
             }
         }
-
     }
 }
